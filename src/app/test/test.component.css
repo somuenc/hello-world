@@ -1,0 +1,16 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-gap: 20px;
+    background-color: lightblue;
+}
+
+.grid-item {
+    grid-gap: 20px;
+}
+
+.grid-item1 {
+    grid-column: 1/2;
+}
+
+

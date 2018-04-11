@@ -1,0 +1,9 @@
+<h3>Employee List</h3>
+<ul>
+  <li *ngFor="let e of employees"> 
+    <div class="detail" (click)="setId(e)">{{ e.name }}</div> 
+  </li>
+  <div *ngIf="displayEmployee">
+    <app-employee-detail [id]="id"></app-employee-detail>
+  </div>
+</ul>

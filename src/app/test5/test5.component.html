@@ -1,0 +1,30 @@
+<div>
+  test5 works!
+  <br/>
+  <h2>{{ name | lowercase }}</h2>
+  <h2>{{ name | uppercase }}</h2>
+  <h2>{{ name | titlecase }}</h2>
+  <h2>{{ message | slice:1:6 }}</h2>
+  <p>{{ person | json | uppercase }}</p>
+  <br/>
+  <h2>{{ 5.678 | number: '1.2-3' }}</h2>
+  <h2>{{ 5.678 | number: '3.4-5' }}</h2>
+  <h2>{{ 5.678 | number: '3.1-2' }}</h2>
+  <h2>{{ 0.25 | percent }}</h2>
+
+  <h2>{{ 0.25 | currency }}</h2>
+
+  <h2>{{ 0.25 | currency: 'USD ': 'code' }}</h2>
+
+  <h2>Date: {{ date | date }}</h2>
+  <h2>Short: {{ date | date: 'short' }}</h2>
+  <h2>Short Date: {{ date | date: 'shortDate' }}</h2>
+  <h2>ShortTime: {{ date | date: 'shortTime' }}</h2>
+  <h2>Long: {{ date | date: 'long' }}</h2>
+  <h2>LongDate: {{ date | date: 'longDate' }}</h2>
+  <h2>LongTime: {{ date | date: 'longTime' }}</h2>
+
+  <h2>Medium: {{ date | date: 'medium' }}</h2>
+  <h2>MediumDate: {{ date | date: 'mediumDate' }}</h2>
+  <h2>MediumTime: {{ date | date: 'mediumTime' }}</h2>
+</div>

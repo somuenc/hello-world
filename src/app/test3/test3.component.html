@@ -1,0 +1,45 @@
+<div>
+  <h2 *ngIf="displayName; else elseBlock">
+    Shweta & Pranavi
+  </h2>
+
+  <ng-template #elseBlock>
+    <h2>Names are hidden</h2>
+  </ng-template>
+</div>
+
+<div>  
+  <div *ngIf="displayName; then thenBlock1; else elseBlock1"></div>
+
+  <ng-template #thenBlock1>
+    display Names
+  </ng-template>
+
+  <ng-template #elseBlock1>
+    Hidden
+  </ng-template>
+</div>
+
+<div>
+  <div>
+    <input type="radio" name="color" id="color1" value="red" /> Red
+    <input type="radio" name="color" id="color2" value="green" /> Green
+    <input type="radio" name="color" id="color3" value="yellow"/> Yellow
+    <input type="radio" name="color" id="color4" value="orange" /> orange
+  </div>
+
+  <div [ngSwitch]="color">
+    <div *ngSwitchCase="'red'">You picked Red</div>
+    <div *ngSwitchCase="'green'">You picked green</div>
+    <div *ngSwitchCase="'yellow'">You picked yellow</div>
+    <div *ngSwitchDefault>Pick Another Color</div>
+  </div>
+</div>
+
+<div>
+  <h1>For Directive</h1>
+  <div>First Color Last Odd Even Index</div>
+  <div *ngFor="let c of colors; first as f; last as l; odd as o; even as e;index as i">
+      {{ f }}   {{ c }}  {{ l }}  {{ o }}  {{ e }}  {{ i }}
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="success">
+  Test2 works fine
+</div>
+
+<div class="fail" [ngClass]="{'fail': name.length == 0, 'success': name.length > 0}">This is new text</div>
+
+<input type="text" [(ngModel)] = "name">
+
+<button type="button" (click)="greet($event)">Greet</button>
+
+{{ greeting }}
+
+
+<button type="reset" (click)="greeting = $event.type">Greet 2</button>
+
+<br />
+
+<input type="text" #myInput/>
+<button (click)="LogMessage(myInput)">Log</button>
+<br/><br/>
+<input type="text" [(ngModel)] = "userName">
+{{ userName }}
