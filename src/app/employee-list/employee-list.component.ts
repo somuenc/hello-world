@@ -10,7 +10,6 @@ export class EmployeeListComponent implements OnInit {
   employee: any;
   employees = [];
   displayEmployee = false;
-  id: any;
   users: Array<any> = [];
   posts: Array<any> = [];
   response: any;
