@@ -7,22 +7,47 @@ import { EmployeeService } from '../employee.service';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
+  employee: any;
   employees = [];
   displayEmployee = false;
   id: any;
+  users: Array<any> = [];
+  posts: Array<any> = [];
+  response: any;
+  errorMsg = '';
 
   constructor(private _employeeService: EmployeeService) { }
 
   ngOnInit() {
-    this._employeeService.getEmployees()
+    this._employeeService.getEmployeesFromFile()
       .subscribe(resp => {
         this.employees = resp;
-      });
+      },
+      error => this.errorMsg = error);
   }
 
   setId(e) {
-    this.id = e.id;
+    this.employee = e;
     this.displayEmployee = true;
   }
 
+  getUsers() {
+    this._employeeService.getUsers()
+      .subscribe(data => this.users = data,
+        error => this.errorMsg = error);
+  }
+
+  getPosts() {
+    this._employeeService.getPosts()
+      .subscribe(data => {
+        this.posts = data.filter(p => p.id && p.id <= 20);
+      },
+      error => this.errorMsg = error);
+  }
+
+  getValues() {
+    this._employeeService.getValues()
+    .subscribe(data => this.response = data,
+      error => this.errorMsg = error);
+  }
 }

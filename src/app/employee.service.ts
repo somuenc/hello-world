@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { IEmployee } from './employee';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
 
 @Injectable()
 export class EmployeeService {
-  private employees = [
-    { id: 1, name: 'Pranavi', email: 'PSK@gmail.com', age: 4 },
-    { id: 2, name: 'Soma', email: 'sbk@gmail.com', age: 36 },
-    { id: 3, name: 'Shweta', email: 'ssk@gmail.com', age: 30 },
-    { id: 4, name: 'Pritvi', email: 'psk@gmail.com', age: 1 }
-  ];
+  private employees = [];
+  url = '/assets/data/employees.json';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getEmployees(): Observable<Array<any>> {
     return Observable.create(o => o.next(this.employees));
@@ -21,4 +22,27 @@ export class EmployeeService {
     return Observable.create(o => o.next(employee));
   }
 
+  getEmployeesFromFile(): Observable<Array<IEmployee>> {
+    return this.http.get<Array<IEmployee>>(this.url)
+      .catch(this.errorHandler);
+  }
+
+  getUsers(): Observable<Array<any>> {
+    return this.http.get<Array<any>>('https://jsonplaceholder.typicode.com/users')
+      .catch(this.errorHandler);
+  }
+
+  getPosts(): Observable<Array<any>> {
+    return this.http.get<Array<any>>('https://jsonplaceholder.typicode.com/posts2')
+      .catch(this.errorHandler);
+  }
+
+  getValues(): Observable<any> {
+    return this.http.get('http://localhost:52009/api/values/145')
+      .catch(this.errorHandler);
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return Observable.throw(error.message || 'Server Error');
+  }
 }

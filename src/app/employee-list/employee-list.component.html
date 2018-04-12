@@ -1,9 +1,32 @@
-<h3>Employee List</h3>
-<ul>
-  <li *ngFor="let e of employees"> 
-    <div class="detail" (click)="setId(e)">{{ e.name }}</div> 
-  </li>
+<div>
+  <h3>Employee List</h3>
+  <ul>
+    <li *ngFor="let e of employees">
+      <div class="detail" (click)="setId(e)">{{ e.name }}</div>
+    </li>
+  </ul>
   <div *ngIf="displayEmployee">
-    <app-employee-detail [id]="id"></app-employee-detail>
+    <app-employee-detail [employee]="employee"></app-employee-detail>
   </div>
-</ul>
+  <br/>
+  {{ errorMsg }}
+  <br/><br/>
+  <button (click)="getUsers()">Get Users</button>
+  <ol>
+    <li *ngFor="let e of users">
+      {{ e.id }} {{ e.name }} {{ e.email }}
+    </li>
+  </ol>
+
+  <br/><br/>
+  <button (click)="getPosts()">Get Posts</button>
+  <ul>
+    <li *ngFor="let p of posts">
+      {{ p.id }} {{ p.userId }} {{ p.title }}
+    </li>
+  </ul>
+
+  <br/><br/>
+  <button (click)="getValues()">Get Values</button><br/> <br/>
+  <div>{{ response | json | uppercase }}</div>
+</div>
